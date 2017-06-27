@@ -7,9 +7,8 @@ namespace BowlingTest
     {
         public bool match(IEnumerable<Frame> frames)
         {
-            var frame = frames.First();
-            return AllPinsShoudBeDown(frame)  
-                && WithAtLeastTwoRoll(frame) 
+            return AllPinsShoudBeDown(frames)  
+                && WithAtLeastTwoRoll(frames) 
                 && TheFollowingFrameShoudBeStarted(frames)
                 && AtLeastOneRollOfTheFollowingFrameShoudBeDone(frames);
         }
@@ -17,7 +16,7 @@ namespace BowlingTest
         public int compute(IEnumerable<Frame> frames, int finalScore)
         {
             var nextScore = 0;
-            var followingFrame = frames.Skip(1).First();
+            var followingFrame = frames.ElementAt(1);
             nextScore = followingFrame.Rolls[0];
          
             return finalScore + frames.First().Rolls.Sum() + nextScore;
@@ -33,14 +32,14 @@ namespace BowlingTest
             return frames.Count() > 1;
         }
 
-        private static bool WithAtLeastTwoRoll(Frame frame)
+        private static bool WithAtLeastTwoRoll(IEnumerable<Frame> frames)
         {
-            return frame.Rolls.Count > 1;
+            return frames.First().Rolls.Count > 1;
         }
 
-        private static bool AllPinsShoudBeDown(Frame frame)
+        private static bool AllPinsShoudBeDown(IEnumerable<Frame> frames)
         {
-            return frame.Rolls.Sum() == 10;
+            return frames.First().Rolls.Sum() == 10;
         }
     }
 }
