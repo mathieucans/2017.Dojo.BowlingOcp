@@ -15,9 +15,8 @@ namespace BowlingTest
 
         public int compute(IEnumerable<Frame> frames, int finalScore)
         {
-            var nextScore = 0;
             var followingFrame = frames.ElementAt(1);
-            nextScore = followingFrame.Rolls[0];
+            var nextScore = followingFrame.Rolls[0];
          
             return finalScore + frames.First().Rolls.Sum() + nextScore;
         }

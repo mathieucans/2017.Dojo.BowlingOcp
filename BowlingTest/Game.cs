@@ -40,7 +40,7 @@ namespace BowlingTest
         {   
             _rules = new IRule[]
             {
-                new SpareRule(), 
+                new SpareRoll(), 
                 new BasicRoll()
             };
             _frames = new List<Frame>()
