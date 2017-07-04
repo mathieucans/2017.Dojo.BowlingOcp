@@ -9,8 +9,12 @@ namespace BowlingTest
 
         public void roll(int i)
         {
-            _frames = _frameRules.First(r => r.match(_frames))
-                .compute(_frames);
+
+            var applyRules = _frameRules.Where(r => r.match(_frames));
+            foreach (var rule in applyRules)
+            {
+                _frames = rule.compute(_frames);
+            }
 
             _frames.Last().roll(i);
 
@@ -47,9 +51,7 @@ namespace BowlingTest
             _frameRules = new List<IFrameRule>
             {
                 new GameStartWithOneFrame(),
-                new AnewFrameIsCreatedWhenTheLastFrameIsFull(), 
-                new WhenFrameIsNotFinishedNoFrameIsAdded(), 
-                
+                new AnewFrameIsCreatedWhenTheLastFrameIsFull(),  
             };
 
 
