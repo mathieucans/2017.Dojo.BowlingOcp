@@ -17,7 +17,7 @@ namespace BowlingTest
         {
             var followingFrame = frames.ElementAt(1);
             var nextScore = followingFrame.Rolls[0];
-         
+            
             return finalScore + frames.First().Rolls.Sum() + nextScore;
         }
 

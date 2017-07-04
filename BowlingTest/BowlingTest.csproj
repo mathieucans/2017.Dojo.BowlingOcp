@@ -65,13 +65,16 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="AnewFrameIsCreatedWhenTheLastFrameIsFull.cs" />
     <Compile Include="BasicRoll.cs" />
     <Compile Include="Frame.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="IAnewFrameIsCreatedWhenTheLastFrameIsFull.cs" />
     <Compile Include="IRule.cs" />
     <Compile Include="SpareRule.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WhenFrameIsNotFinishedNoFrameIsAdded.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

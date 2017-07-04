@@ -9,11 +9,10 @@ namespace BowlingTest
 
         public void roll(int i)
         {
+            _frames = _frameRules.First(r => r.match(_frames))
+                .compute(_frames);
+
             _frames.Last().roll(i);
-            if (_frames.Last().Rolls.Count == 2)
-            {
-                _frames.Add(new Frame());
-            }
 
             var score = CalcScore(0, _frames);
             _finalScore = score;
@@ -34,7 +33,8 @@ namespace BowlingTest
     
         private IRule[] _rules;
 
-        private List<Frame> _frames;
+        private IEnumerable<Frame> _frames;
+        private List<IFrameRule> _frameRules;
 
         public Game()
         {   
@@ -43,10 +43,19 @@ namespace BowlingTest
                 new SpareRule(), 
                 new BasicRoll()
             };
-            _frames = new List<Frame>()
+
+            _frameRules = new List<IFrameRule>
             {
-                new Frame()
+                new GameStartWithOneFrame(),
+                new AnewFrameIsCreatedWhenTheLastFrameIsFull(), 
+                new WhenFrameIsNotFinishedNoFrameIsAdded(), 
+                
             };
+
+
+
+
+            _frames = new List<Frame>();
 
         }
 
