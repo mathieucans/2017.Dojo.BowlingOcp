@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Security.Policy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xunit;
@@ -40,26 +39,5 @@ namespace BowlingTest
             Assert.AreEqual(score, game.score());
         }
 
-    }
-
-    public interface IRule
-    {
-        bool match(Frame frame);
-        int compute(Frame i, IEnumerable<Frame> followingFrames, int finalScore);
-    }
-
-    public class Frame
-    {
-        public Frame()
-        {
-            Rolls = new List<int>();
-        }
-
-        public List<int> Rolls { get; private set; }
-
-        public void roll(int i)
-        {
-            Rolls.Add(i);
-        }
     }
 }
