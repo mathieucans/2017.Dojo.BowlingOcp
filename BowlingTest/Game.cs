@@ -18,34 +18,42 @@ namespace BowlingTest
 
             _frames.Last().roll(i);
 
-            var score = CalcScore(0, _frames);
+    
+            CalcScore();
+        }
+
+        private void CalcScore()
+        {
+            var frames = _frames;
+            var score = 0;
+
+            while (frames.Any())
+            {
+                var applyRules = _rules.Where(r => r.match(frames));
+                foreach (var rule in applyRules)
+                {
+                    score = rule.compute(frames, score);
+                }              
+
+                frames = frames.Skip(1);
+            }
+
             _finalScore = score;
         }
-        
-        private int CalcScore(int lastScore, IEnumerable<Frame> frames)
-        {
-            if (frames.Any())
-            {
-                var newScore =  _rules.First(r => r.match(frames))
-                    .compute(frames, lastScore);
-            
-                return CalcScore(newScore, frames.Skip(1));
-            }
-            return  lastScore;
-        }
-       
-    
+
+
         private IRule[] _rules;
 
         private IEnumerable<Frame> _frames;
         private List<IFrameRule> _frameRules;
 
         public Game()
-        {   
+        {
+            var spareRule = new SpareRule();
             _rules = new IRule[]
             {
-                new SpareRule(), 
-                new BasicRoll()
+                spareRule, 
+                new BasicRoll(new [] { spareRule})
             };
 
             _frameRules = new List<IFrameRule>
