@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace BowlingTest
+namespace Bowling
 {
     class AnewFrameIsCreatedWhenTheLastFrameIsFull : IFrameRule
     {

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace BowlingTest
+namespace Bowling
 {
     public class SpareRule : IRule
     {
-        public bool match(IEnumerable<Frame> frames)
+        public bool Match(IEnumerable<Frame> frames)
         {
             return AllPinsShoudBeDown(frames)  
                 && WithAtLeastTwoRoll(frames) 
@@ -13,7 +13,7 @@ namespace BowlingTest
                 && AtLeastOneRollOfTheFollowingFrameShoudBeDone(frames);
         }
 
-        public int compute(IEnumerable<Frame> frames, int finalScore)
+        public int Compute(IEnumerable<Frame> frames, int finalScore)
         {
             var followingFrame = frames.ElementAt(1);
             var nextScore = followingFrame.Rolls[0];

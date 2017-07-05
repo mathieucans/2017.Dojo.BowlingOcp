@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace BowlingTest
+namespace Bowling
 {
     public class BasicRollRule : IRule
     {
@@ -11,12 +11,12 @@ namespace BowlingTest
         {
             _other = other;
         }
-        public bool match(IEnumerable<Frame> frames)
+        public bool Match(IEnumerable<Frame> frames)
         {   
-            return _other.Count(r => r.match(frames)) == 0;
+            return _other.Count(r => r.Match(frames)) == 0;
         }
 
-        public int compute(IEnumerable<Frame> frames, int finalScore)
+        public int Compute(IEnumerable<Frame> frames, int finalScore)
         {
             return finalScore + frames.First().Rolls.Sum();
         }

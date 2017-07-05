@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using Bowling;
+using Xunit;
 
 namespace BowlingTest
 {
@@ -17,7 +18,7 @@ namespace BowlingTest
             {
                 game.Roll(int.Parse(roll));
             }
-            Assert.Equal(score, game.score());
+            Assert.Equal(score, game.Score());
         }
 
         [Theory]
@@ -31,7 +32,7 @@ namespace BowlingTest
             {
                 game.Roll(int.Parse(roll));
             }
-            Assert.Equal(score, game.score());
+            Assert.Equal(score, game.Score());
         }
 
     }
