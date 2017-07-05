@@ -15,7 +15,7 @@ namespace BowlingTest
 
             foreach (var roll in rolls.Split(','))
             {
-                game.roll(int.Parse(roll));
+                game.Roll(int.Parse(roll));
             }
             Assert.Equal(score, game.score());
         }
@@ -29,7 +29,7 @@ namespace BowlingTest
 
             foreach (var roll in rolls.Split(','))
             {
-                game.roll(int.Parse(roll));
+                game.Roll(int.Parse(roll));
             }
             Assert.Equal(score, game.score());
         }

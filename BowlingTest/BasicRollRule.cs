@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace BowlingTest
 {
-    public class BasicRoll : IRule
+    public class BasicRollRule : IRule
     {
         private readonly IEnumerable<IRule> _other;
 
-        public BasicRoll(IEnumerable<IRule> other)
+        public BasicRollRule(IEnumerable<IRule> other)
         {
             _other = other;
         }

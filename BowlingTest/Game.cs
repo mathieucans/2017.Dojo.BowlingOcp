@@ -7,9 +7,9 @@ namespace BowlingTest
     {
         private int _finalScore = 0;
 
-        public void roll(int i)
+        public void Roll(int i)
         {
-
+                
             var applyRules = _frameRules.Where(r => r.match(_frames));
             foreach (var rule in applyRules)
             {
@@ -53,7 +53,7 @@ namespace BowlingTest
             _rules = new IRule[]
             {
                 spareRule, 
-                new BasicRoll(new [] { spareRule})
+                new BasicRollRule(new [] { spareRule})
             };
 
             _frameRules = new List<IFrameRule>
