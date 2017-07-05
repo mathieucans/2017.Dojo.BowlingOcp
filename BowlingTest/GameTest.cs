@@ -1,12 +1,7 @@
-﻿using System;
-using System.Security.Policy;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+﻿using Xunit;
 
 namespace BowlingTest
 {
-    [TestClass]
     public class GameTest
     {
         [Theory]
@@ -20,9 +15,9 @@ namespace BowlingTest
 
             foreach (var roll in rolls.Split(','))
             {
-                game.roll(int.Parse(roll));
+                game.Roll(int.Parse(roll));
             }
-            Assert.AreEqual(score, game.score());
+            Assert.Equal(score, game.score());
         }
 
         [Theory]
@@ -34,9 +29,9 @@ namespace BowlingTest
 
             foreach (var roll in rolls.Split(','))
             {
-                game.roll(int.Parse(roll));
+                game.Roll(int.Parse(roll));
             }
-            Assert.AreEqual(score, game.score());
+            Assert.Equal(score, game.score());
         }
 
     }

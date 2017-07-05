@@ -7,59 +7,62 @@ namespace BowlingTest
     {
         private int _finalScore = 0;
 
-        public void roll(int i)
+        public void Roll(int i)
         {
-            _frames.Last().roll(i);
-            if (_frames.Last().Rolls.Count == 2)
+                
+            var applyRules = _frameRules.Where(r => r.match(_frames));
+            foreach (var rule in applyRules)
             {
-                _frames.Add(new Frame());
+                _frames = rule.compute(_frames);
             }
 
+            _frames.Last().roll(i);
+
+    
+            CalcScore();
+        }
+
+        private void CalcScore()
+        {
+            var frames = _frames;
             var score = 0;
-            foreach (var frame in _frames)
+
+            while (frames.Any())
             {
-                score = _rules.First(r => r.match(frame)).compute(
-                    frame, FollowingFrames(frame), score);
+                var applyRules = _rules.Where(r => r.match(frames));
+                foreach (var rule in applyRules)
+                {
+                    score = rule.compute(frames, score);
+                }              
+
+                frames = frames.Skip(1);
             }
+
             _finalScore = score;
         }
 
-        private IEnumerable<Frame> FollowingFrames(Frame frame)
-        {
-            var list = new List<Frame>();
-            var add = false;
-            foreach (var frameToAdd in _frames)
-            {
-                if (add)
-                {
-                    list.Add(frameToAdd);    
-                }
-
-                if(frameToAdd == frame)
-                {
-                    add = true;
-                }
-                
-            }
-
-            return list;
-        }
 
         private IRule[] _rules;
 
-        private List<Frame> _frames;
+        private IEnumerable<Frame> _frames;
+        private List<IFrameRule> _frameRules;
 
         public Game()
-        {   
+        {
+            var spareRule = new SpareRule();
             _rules = new IRule[]
             {
-                new SpareRoll(), 
-                new BasicRoll()
+                spareRule, 
+                new BasicRollRule(new [] { spareRule})
             };
-            _frames = new List<Frame>()
+
+            _frameRules = new List<IFrameRule>
             {
-                new Frame()
+                new GameStartWithOneFrame(),
+                new AnewFrameIsCreatedWhenTheLastFrameIsFull(),  
             };
+
+            _frames = new List<Frame>();
 
         }
 

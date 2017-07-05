@@ -2,9 +2,9 @@
 
 namespace BowlingTest
 {
-    public interface IRule
+    interface IFrameRule
     {
+        IEnumerable<Frame> compute(IEnumerable<Frame> frames);
         bool match(IEnumerable<Frame> frames);
-        int compute(IEnumerable<Frame> frames, int finalScore);
     }
 }
