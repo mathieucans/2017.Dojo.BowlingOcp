@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Bowling.FrameRules;
+using Bowling.ScoreRules;
 
 namespace Bowling
 {
@@ -7,7 +9,7 @@ namespace Bowling
     {
         private int _finalScore = 0;
 
-        private IRule[] _rules;
+        private IScoreRule[] _scoreRules;
 
         private IEnumerable<Frame> _frames;
 
@@ -15,14 +17,14 @@ namespace Bowling
 
         public Game()
         {
-            var spareRule = new SpareRule();
-            var strikeBasicRule = new StrikeRule();
+            var spareRule = new SpareScoreRule();
+            var strikeBasicRule = new StrikeScoreRule();
 
-            _rules = new IRule[]
+            _scoreRules = new IScoreRule[]
             {
                 strikeBasicRule,
                 spareRule, 
-                new BasicRollRule(new IRule[] { spareRule, strikeBasicRule})
+                new BasicScoreRule(new IScoreRule[] { spareRule, strikeBasicRule})
             };
 
             _frameRules = new IFrameRule[]
@@ -65,7 +67,7 @@ namespace Bowling
 
             while (frames.Any())
             {
-                var applyRules = _rules.Where(r => r.Match(frames));
+                var applyRules = _scoreRules.Where(r => r.Match(frames));
                 foreach (var rule in applyRules)
                 {
                     score = rule.Compute(frames, score);

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Bowling
+namespace Bowling.ScoreRules
 {
-    public class SpareRule : IRule
+    public class SpareScoreRule : IScoreRule
     {
         public bool Match(IEnumerable<Frame> frames)
         {
@@ -13,12 +13,12 @@ namespace Bowling
                 && AtLeastOneRollOfTheFollowingFrameShoudBeDone(frames);
         }
 
-        public int Compute(IEnumerable<Frame> frames, int finalScore)
+        public int Compute(IEnumerable<Frame> frames, int previousScore)
         {
             var followingFrame = frames.ElementAt(1);
             var nextScore = followingFrame.Rolls[0];
             
-            return finalScore + frames.First().Rolls.Sum() + nextScore;
+            return previousScore + frames.First().Rolls.Sum() + nextScore;
         }
 
         private bool AtLeastOneRollOfTheFollowingFrameShoudBeDone(IEnumerable<Frame> frames)

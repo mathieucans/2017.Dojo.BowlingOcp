@@ -40,16 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnewFrameIsCreatedWhenTheLastFrameIsFull.cs" />
-    <Compile Include="BasicRollRule.cs" />
+    <Compile Include="FrameRules\AnewFrameIsCreatedWhenTheLastFrameIsFull.cs" />
+    <Compile Include="ScoreRules\BasicScoreRule.cs" />
     <Compile Include="Frame.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GameStartWithOneFrame.cs" />
-    <Compile Include="IFrameRule.cs" />
-    <Compile Include="IRule.cs" />
+    <Compile Include="FrameRules\GameStartWithOneFrame.cs" />
+    <Compile Include="FrameRules\IFrameRule.cs" />
+    <Compile Include="ScoreRules\IScoreRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpareRule.cs" />
-    <Compile Include="StrikeRule.cs" />
+    <Compile Include="ScoreRules\SpareScoreRule.cs" />
+    <Compile Include="ScoreRules\StrikeScoreRule.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

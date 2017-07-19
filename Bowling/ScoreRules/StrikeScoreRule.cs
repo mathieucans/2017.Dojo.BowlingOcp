@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Bowling
+namespace Bowling.ScoreRules
 {
-    public class StrikeRule : IRule
+    public class StrikeScoreRule : IScoreRule
     {
         
         public bool Match(IEnumerable<Frame> frames)
@@ -11,11 +11,11 @@ namespace Bowling
             return frames.First().Rolls.Count == 1 && frames.First().Rolls[0] == 10;
         }
 
-        public int Compute(IEnumerable<Frame> frames, int finalScore)
+        public int Compute(IEnumerable<Frame> frames, int previousScore)
         {
             var allRoll = CreateAllRoll(frames).Take(3);
 
-            return finalScore + allRoll.Sum();
+            return previousScore + allRoll.Sum();
         }
 
         private static List<int> CreateAllRoll(IEnumerable<Frame> frames)

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Bowling
+namespace Bowling.FrameRules
 {
     interface IFrameRule
     {
