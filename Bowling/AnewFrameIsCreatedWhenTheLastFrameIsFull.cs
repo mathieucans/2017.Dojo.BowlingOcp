@@ -7,7 +7,7 @@ namespace Bowling
     {
         public bool match(IEnumerable<Frame> frames)
         {
-            return frames.Last().Rolls.Count == 2;
+            return frames.Last().Rolls.Count == 2 || frames.Last().Rolls.Sum() == 10;
         }
 
         public IEnumerable<Frame> compute(IEnumerable<Frame> frames )

@@ -16,16 +16,20 @@ namespace Bowling
         public Game()
         {
             var spareRule = new SpareRule();
+            var strikeBasicRule = new StrikeRule();
+
             _rules = new IRule[]
             {
+                strikeBasicRule,
                 spareRule, 
-                new BasicRollRule(new [] { spareRule})
+                new BasicRollRule(new IRule[] { spareRule, strikeBasicRule})
             };
 
             _frameRules = new IFrameRule[]
             {
                 new GameStartWithOneFrame(),
-                new AnewFrameIsCreatedWhenTheLastFrameIsFull(),  
+                new AnewFrameIsCreatedWhenTheLastFrameIsFull(),
+               
             };
 
             _frames = new List<Frame>();
