@@ -17,14 +17,14 @@ namespace Bowling
 
         public Game()
         {
-            var spareRule = new SpareScoreRule();
-            var strikeBasicRule = new StrikeScoreRule();
+            var spareRule = new SpareScoreRuleSumAllPinsOfTheFramesAndPinsOfTheNextRoll();
+            var strikeBasicRule = new StrikeScoreRuleSumThePinsDownOfTheFrameAndPinsOfTheTwoNextRolls();
 
             _scoreRules = new IScoreRule[]
             {
                 strikeBasicRule,
                 spareRule, 
-                new BasicScoreRule(new IScoreRule[] { spareRule, strikeBasicRule})
+                new BasicScoreRuleSumAllPinsDownOfTheFrame(new IScoreRule[] { spareRule, strikeBasicRule})
             };
 
             _frameRules = new IFrameRule[]

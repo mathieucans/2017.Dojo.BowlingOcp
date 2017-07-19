@@ -41,15 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrameRules\AnewFrameIsCreatedWhenTheLastFrameIsFull.cs" />
-    <Compile Include="ScoreRules\BasicScoreRule.cs" />
+    <Compile Include="ScoreRules\BasicScoreRuleSumAllPinsDownOfTheFrame.cs" />
     <Compile Include="Frame.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="FrameRules\GameStartWithOneFrame.cs" />
     <Compile Include="FrameRules\IFrameRule.cs" />
     <Compile Include="ScoreRules\IScoreRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScoreRules\SpareScoreRule.cs" />
-    <Compile Include="ScoreRules\StrikeScoreRule.cs" />
+    <Compile Include="ScoreRules\SpareScoreRuleSumAllPinsOfTheFramesAndPinsOfTheNextRoll.cs" />
+    <Compile Include="ScoreRules\StrikeScoreRuleSumThePinsDownOfTheFrameAndPinsOfTheTwoNextRolls.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

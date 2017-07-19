@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace Bowling.ScoreRules
 {
-    public class BasicScoreRule : IScoreRule
+    public class BasicScoreRuleSumAllPinsDownOfTheFrame : IScoreRule
     {
         private readonly IEnumerable<IScoreRule> _other;
 
-        public BasicScoreRule(IEnumerable<IScoreRule> other)
+        public BasicScoreRuleSumAllPinsDownOfTheFrame(IEnumerable<IScoreRule> other)
         {
             _other = other;
         }

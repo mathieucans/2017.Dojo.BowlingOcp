@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Bowling.ScoreRules
 {
-    public class SpareScoreRule : IScoreRule
+    public class SpareScoreRuleSumAllPinsOfTheFramesAndPinsOfTheNextRoll : IScoreRule
     {
         public bool Match(IEnumerable<Frame> frames)
         {
