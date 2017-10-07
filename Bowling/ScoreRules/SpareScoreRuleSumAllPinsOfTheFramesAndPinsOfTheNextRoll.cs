@@ -10,7 +10,7 @@ namespace Bowling.ScoreRules
             return AllPinsShoudBeDown(frames)  
                 && WithAtLeastTwoRoll(frames) 
                 && TheFollowingFrameShoudBeStarted(frames)
-                && AtLeastOneRollOfTheFollowingFrameShoudBeDone(frames);
+                && AtLeastOneRollOfTheFollowingFrameShoudBeDone(frames);    
         }
 
         public int Compute(IEnumerable<Frame> frames, int previousScore)
